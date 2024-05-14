@@ -43,7 +43,7 @@ public class Word
 
     public string GetDisplayText()
     {
-        if(IsHidden()==true)
+        if(_isHidden == true)
         {
             string wordTodisplay = new string('_',_text.Length);
             return wordTodisplay;

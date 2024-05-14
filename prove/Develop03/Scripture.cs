@@ -1,16 +1,17 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 public class Scripture
 {
     private Reference _reference;
-    private List<Word> _words;
+    private List<Word> _words = new List<Word>();
 
     public Scripture(Reference reference, string text)
     {
         _reference = reference;
 
-        string[] word = text.Split(' ');
+        string[] word = text.Split(" ");
         foreach (string i in word)
         {
             Word w = new Word(i);
@@ -22,31 +23,48 @@ public class Scripture
     {
         Random randomGenerator = new Random();
         List<Word> visibleWords = new List<Word>();
-       
-       foreach (Word word in _words)
+        int j = numberToHide;
+       do
        {
-        if (word.IsHidden() != true)
+        foreach (Word word in _words)
         {
-            visibleWords.Add(word);
+            if (word.IsHidden() != true)
+            {
+                visibleWords.Add(word);
+            }
         }
-       }
-       foreach (Word i in visibleWords)
-       {
-            numberToHide = randomGenerator.Next(visibleWords.Count);
-            i.Hide();
-       }
+
+            int index = randomGenerator.Next(visibleWords.Count);
+            if (visibleWords.Count != 0)
+            {
+                Word wordToHide = visibleWords.ElementAt(index);
+                wordToHide.Hide();
+                j = j - 1;
+            }
+            if (visibleWords.Count == 0)
+            {
+                break;
+            }
+       }while (j != 0);
     }
 
     public string GetDisplayText()
     {
         string reference = _reference.GetDisplayText();
-        string text = string.Empty;
+        string text = "";
+        string scripture ="";
+        List<string> textToDisplay = new List<string>();
         foreach (Word word in _words)
         {
-            text = word.GetDisplayText() + " ";
+           text = word.GetDisplayText();
+           textToDisplay.Add(text);
         }
         
-        return reference + text;
+        foreach (string word in textToDisplay)
+        {
+            scripture = string.Join(" ",textToDisplay);
+        }
+        return reference+ " " + scripture;
         
     }
 
@@ -57,18 +75,18 @@ public class Scripture
         {
             if (word.IsHidden() != true)
             {
-                i += 1;
+                
+                i = i + 1;
             }
         }
 
-        if (i == 0)
-        {
-            return true;
-        }
-        else
+        if (i > 0)
         {
             return false;
         }
-
+        else
+        {
+            return true;
+        }
     }
 }

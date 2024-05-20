@@ -28,7 +28,7 @@ public class ReflectingActivity : Activity
             {
                 Console.WriteLine();
                 DisplayQuestion();
-                ShowSpinner(15);
+                ShowSpinner(1);
             } while (DateTime.Now < endTime);
 
             Console.WriteLine();
@@ -61,7 +61,7 @@ public class ReflectingActivity : Activity
 
             Random random = new Random();
 
-            return _questions[random.Next(_questions.Count)];   
+            return _questions[random.Next(_questions.Count)]; 
         }    
 
         public void DisplayPrompt()

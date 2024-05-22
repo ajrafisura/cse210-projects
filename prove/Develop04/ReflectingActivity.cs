@@ -28,7 +28,7 @@ public class ReflectingActivity : Activity
             {
                 Console.WriteLine();
                 DisplayQuestion();
-                ShowSpinner(1);
+                ShowSpinner(15);
             } while (DateTime.Now < endTime);
 
             Console.WriteLine();

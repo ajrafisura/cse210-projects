@@ -7,7 +7,6 @@ using System;
 
         public Circle(string color, double radius) : base(color)
         {
-            _color = color;
             _radius = radius;
         }
 

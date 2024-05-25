@@ -7,7 +7,6 @@ using System;
 
         public Rectange(string color, double length, double width) : base(color)
         {
-            _color = color;
             _length = length;
             _width = width;
         }

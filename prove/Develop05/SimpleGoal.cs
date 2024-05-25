@@ -7,23 +7,41 @@ public class SimpleGoal : Goal
 
         public SimpleGoal(string name, string description, int points) : base(name, description, points)
         {
-            _shortName = "Aries";
-            _description = "description";
-            _points = 0;
+            _isComplete = false;
         }
 
-    public override void RecordEvent()
+        public SimpleGoal(string name, string description, int points, bool isComplete) : base(name, description, points)
+        {
+            _isComplete = isComplete;
+        }
+    public override int RecordEvent()
     {
-        throw new NotImplementedException();
+        if (_isComplete == false)
+        {
+            _isComplete = true;
+            return _points;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        if (_isComplete == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
+        return $"SimpleGoal|{_shortName}|{_description}|{_points}|{_isComplete}";
     }
+
 }

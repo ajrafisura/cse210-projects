@@ -1,6 +1,7 @@
 using System;
+using System.Runtime;
 
-    public abstract class Goal
+public abstract class Goal
     {
         protected string _shortName;
         protected string _description;
@@ -13,15 +14,30 @@ using System;
             _points = points;
         }
 
-        public abstract void RecordEvent();
+        public abstract int RecordEvent();
 
         public abstract bool IsComplete();
 
-        public string GetDetailsString()
+        public virtual string GetDetailsString()
         {
-            return "";
+            string checkbox = "";
+            if (IsComplete() == true)
+            {
+                checkbox = "[X]";
+            }
+            else
+            {
+                checkbox = "[ ]";
+            }
+
+            return $"{checkbox} {_shortName} ({_description})";
         }
 
         public abstract string GetStringRepresentation();
+
+        public void DisplayGoalName()
+        {
+            Console.Write($"{_shortName}.");
+        }
 
     }

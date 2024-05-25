@@ -1,6 +1,6 @@
 using System;
 
-    public class Shape
+    public abstract class Shape
     {
         protected string _color;
 
@@ -19,9 +19,6 @@ using System;
             _color = color;
         }
 
-        public virtual double GetArea()
-        {
-            return 0;
-        }
+        public abstract double GetArea();
 
     }

@@ -40,12 +40,12 @@ public class GoalManager
                     CreateGoal();
                 }
 
-                if (answer == "2")
+                else if (answer == "2")
                 {
                     ListGoalDetails();
                 }
 
-                if (answer == "3")
+                else if (answer == "3")
                 {
                     Console.Write("What is the name of the goal file? ");
                     string file = Console.ReadLine();
@@ -53,7 +53,7 @@ public class GoalManager
                     SaveGoals(file);
                 }
 
-                if (answer == "4")
+                else if (answer == "4")
                 {
                     Console.Write("What is the filename for the goal file? ");
                     string file = Console.ReadLine();
@@ -61,9 +61,16 @@ public class GoalManager
                     LoadGoals(file);
                 }
 
-                if (answer == "5")
+                else if (answer == "5")
                 {
                     RecordEvent();
+                }
+
+                else
+                {
+                    Console.WriteLine();
+                    Console.Write("You had entered an invalid choice.");
+                    Console.WriteLine();
                 }
             }
         }
@@ -132,13 +139,13 @@ public class GoalManager
                 _goals.Add(cg);
             }
 
-            if (answer == "1")
+            else if (answer == "1")
             {
                 SimpleGoal sg = new SimpleGoal(name, description, points);
                 _goals.Add(sg);
             }
 
-            if (answer == "2")
+            else if (answer == "2")
             {
                 EternalGoal eg = new EternalGoal(name, description, points);
                 _goals.Add(eg);
@@ -200,7 +207,7 @@ public class GoalManager
 
                 }
 
-                if (parts[0] == "EternalGoal")
+                else if (parts[0] == "EternalGoal")
                 {
                     string name = parts[1];
                     string description = parts[2];
@@ -211,7 +218,7 @@ public class GoalManager
                     _goals.Add(eg);
                 }
 
-                if (parts[0] == "ChecklistGoal")
+                else if (parts[0] == "ChecklistGoal")
                 {
                     string name = parts[1];
                     string description = parts[2];

@@ -15,9 +15,18 @@ using System;
         {
             return $"{_date} {GetType().ToString()} ({_minutes}) - Distance {Math.Round(GetDistance(),2)} km, Speed {Math.Round(GetSpeed(),2)} kph, Pace {Math.Round(GetPace(),2)} min per km";
         }
-        public abstract double GetDistance();
+        public virtual double GetDistance()
+        {
+            return _minutes/GetPace();
+        }
 
-        public abstract double GetSpeed();
+        public virtual double GetSpeed()
+        {
+            return GetDistance()/_minutes*60;
+        }
 
-        public abstract double GetPace();
+        public virtual double GetPace()
+        {
+            return 60/GetSpeed();
+        }
     }

@@ -9,19 +9,9 @@ using System;
             _laps = laps;
         }
 
-    public override double GetDistance()
-    {
-        double distance = (((double)_laps*50)/1000);
-        return distance;
-    }
+        public override double GetDistance()
+        {  
+            return (((double)_laps*50)/1000);
+        }
 
-    public override double GetSpeed()
-    {
-        return (GetDistance()/_minutes)*60;
-    }
-
-    public override double GetPace()
-    {
-        return 60/(GetSpeed());
-    }
 }

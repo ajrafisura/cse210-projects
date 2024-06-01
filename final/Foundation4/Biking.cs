@@ -9,11 +9,6 @@ using System;
             _speed = speed;
         }
 
-    public override double GetDistance()
-    {
-        return _speed*_minutes/60;
-    }
-
     public override double GetSpeed()
     {
         return _speed;
